@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿<style>
+    table, tr {
+        text-align: center;
+        border: 1px solid black;
+        width: 100%
+    }
+</style>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,6 +16,20 @@
 </head>
 <body>
     <header>
+        <table>
+            <tr>
+                <th>Local Time</th>
+                <th>NYSE Time</th>
+                <th>Date</th>
+                <th>Day of Week</th>
+            </tr>
+            <tr>
+                <td>@DateTime.Now.ToLongTimeString()</td>
+                <td>@TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time")).ToLongTimeString()</td>
+                <td>@DateTime.Now.ToShortDateString()</td>
+                <td>@DateTime.Now.DayOfWeek</td>
+            </tr>
+        </table>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ExchangeGuru</a>
@@ -23,6 +44,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="StockListings">Stock Listings</a>
                         </li>
                     </ul>
                 </div>
